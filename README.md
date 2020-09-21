@@ -192,16 +192,26 @@ These instructions assume you chose `/usr/local/`. The subdirectory `idea-IC-VER
 will be created from the archive.
 
 ### Zed Attack Proxy
-TBD
 #### Download
+Download the latest Zed Attack Proxy version from ZAP’s website at 
+[this link](https://www.zaproxy.org/download/). At time of this writing, the 
+current version is 2.9, but feel free to use a later version. Click the download 
+link for the computer system you are running.
 #### Install
-#### Verify
+Launch the installer you downloaded, either the .exe, .dmg, or shell script, 
+depending on the download you selected based on your computer system (you might need
+to add execute permissions to the file for Linux systems). Follow the installation
+instructions. Once the installation is complete, launch ZAP and read the license 
+terms. Click Agree if you accept the terms, and ZAP will finish installing, then 
+ZAP will automatically start.
 
 ### JMeter
-TBD
-#### Download
-#### Install
-#### Verify
+#### Download and Install
+Download the latest JMeter version from apache’s website at 
+[this link](https://jmeter.apache.org/download_jmeter.cgi). Select the link for 
+either the tgz or zip, depending on whichever compressed file you are comfortable
+with handling. Unzip the zip/tar file into the directory where you want 
+JMeter to be installed.
 
 ## Exercises
 * Exercise 1: Functional Testing
