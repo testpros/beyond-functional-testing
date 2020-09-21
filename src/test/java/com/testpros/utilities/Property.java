@@ -18,10 +18,10 @@ public class Property {
      * @return String: the property value, null if unset
      */
     public static String getProperty(String property) {
-        if( System.getProperty(property) != null ) {
+        if (System.getProperty(property) != null) {
             return System.getProperty(property);
         }
-        if( System.getenv(property) != null) {
+        if (System.getenv(property) != null) {
             return System.getenv(property);
         }
         Properties prop = new Properties();

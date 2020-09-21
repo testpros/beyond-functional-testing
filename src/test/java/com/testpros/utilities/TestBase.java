@@ -22,6 +22,7 @@ public class TestBase {
      * Provides access to the url that we will be testing. It should be specified as 'baseUrl'. If not set,
      * the production instance will be used. To override this value, set 'baseUrl' in the properties file
      * (src/test/resources/test.properties), or provide it as a command line value or environment variable.
+     *
      * @return the url of the site under test
      */
     protected String getBaseUrl() {
@@ -37,6 +38,7 @@ public class TestBase {
      * used. To override this value, set 'browser' in the properties file (src/test/resources/test.properties), or
      * provide it as a command line value or environment variable. Note, this browser must be installed locally on the
      * system.
+     *
      * @return the browser to test with
      */
     public String getBrowser() {
@@ -55,7 +57,7 @@ public class TestBase {
     @BeforeMethod
     public void setupBrowser() {
         WebDriver driver;
-        switch(getBrowser().toLowerCase()) {
+        switch (getBrowser().toLowerCase()) {
             case "firefox":
                 WebDriverManager.firefoxdriver().forceCache().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -75,6 +77,7 @@ public class TestBase {
     /**
      * After we run each of our tests, we need to tear down the system. But before we do, we are first going to take a
      * screenshot, and write it into the TestNG logger.
+     *
      * @param result TestNG interface containing run details of the test; automatically provided by dependency injection
      */
     @AfterMethod(alwaysRun = true)
