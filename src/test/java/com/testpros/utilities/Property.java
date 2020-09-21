@@ -10,6 +10,13 @@ public class Property {
 
     private static final Logger log = Logger.getLogger(Property.class);
 
+    /**
+     * Retrieves the specified program property. If it exists from the system properties, that is returned, overridding
+     * all other values. Otherwise, if it exists from the properties file, that is returned, otherwise, null is returned
+     *
+     * @param property - what property value to return
+     * @return String: the property value, null if unset
+     */
     public static String getProperty(String property) {
         if( System.getProperty(property) != null ) {
             return System.getProperty(property);
