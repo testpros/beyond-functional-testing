@@ -1,13 +1,12 @@
 package com.testpros.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -49,6 +48,16 @@ public class TestBase {
         return browser;
     }
 
+    public void setupProxy(MutableCapabilities capabilities) {
+        String setProxy = Property.getProperty("proxy");
+        if (setProxy != null) {
+            // set the proxy information
+            Proxy proxy = new Proxy();
+            proxy.setHttpProxy(setProxy);
+            capabilities.setCapability(CapabilityType.PROXY, proxy);
+        }
+    }
+
     /**
      * Before we run any of our tests, we need to setup our system for test. This involves determining the browser to
      * test with, and to configure it, and then launch it. Rather than downloading the proper webdriver drivers, we're
@@ -61,6 +70,7 @@ public class TestBase {
             case "firefox":
                 WebDriverManager.firefoxdriver().forceCache().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                setupProxy(firefoxOptions);
                 firefoxOptions.setHeadless(true);
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
@@ -68,6 +78,7 @@ public class TestBase {
             default:
                 WebDriverManager.chromedriver().forceCache().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
+                setupProxy(chromeOptions);
                 chromeOptions.setHeadless(true);
                 driver = new ChromeDriver(chromeOptions);
         }
