@@ -1,13 +1,11 @@
 package com.testpros;
 
+import com.testpros.models.Layout;
 import com.testpros.utilities.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -30,7 +28,8 @@ public class RecentNewsIT extends TestBase {
     @Test
     public void recentNewsTest() {
         WebDriver driver = drivers.get();
-        assertTrue(driver.findElement(By.tagName("main")).isDisplayed());
+        Layout layout = new Layout(driver);
+        assertTrue(layout.getMain().isDisplayed());
     }
 
     /**
@@ -39,7 +38,8 @@ public class RecentNewsIT extends TestBase {
     @Test
     public void recentNewsHeaderTest() {
         WebDriver driver = drivers.get();
-        WebElement header = driver.findElement(By.tagName("main")).findElement(By.tagName("h1"));
+        Layout layout = new Layout(driver);
+        WebElement header = layout.getHeader(layout.getMain());
         assertTrue(header.isDisplayed());
         assertEquals(header.getText(), "Recent News");
     }
@@ -51,9 +51,7 @@ public class RecentNewsIT extends TestBase {
     @Test
     public void recentNewsThreeItems() {
         WebDriver driver = drivers.get();
-        WebElement postsContainer = driver.findElement(By.tagName("main")).findElement(
-                By.className("elementor-posts-container"));
-        List<WebElement> articles = postsContainer.findElements(By.tagName("article"));
-        assertEquals(articles.size(), 3);
+        Layout layout = new Layout(driver);
+        assertEquals(layout.getArticles().size(), 3);
     }
 }

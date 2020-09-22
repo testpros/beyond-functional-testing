@@ -209,8 +209,8 @@ ZAP will automatically start.
 #### Download and Install
 Download the latest JMeter version from apache’s website at 
 [this link](https://jmeter.apache.org/download_jmeter.cgi). Select the link for 
-either the tgz or zip, depending on whichever compressed file you are comfortable
-with handling. Unzip the zip/tar file into the directory where you want 
+either the tgz or zip, depending on whichever compressed file type you are 
+comfortable handling. Unzip the zip/tar file into the directory where you want 
 JMeter to be installed.
 
 ## Exercises
