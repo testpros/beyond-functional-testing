@@ -14,7 +14,23 @@ public class Layout {
         this.driver = driver;
     }
 
+    public WebElement getMain() {
+        return this.driver.findElement(By.tagName("main"));
+    }
+
+    public WebElement getHeader(WebElement element) {
+        return element.findElement(By.tagName("h1"));
+    }
+
     public List<WebElement> getSections() {
         return this.driver.findElements(By.className("elementor-section"));
+    }
+
+    public WebElement getPosts() {
+        return getMain().findElement(By.className("elementor-posts-container"));
+    }
+
+    public List<WebElement> getArticles() {
+        return getPosts().findElements(By.tagName("article"));
     }
 }
