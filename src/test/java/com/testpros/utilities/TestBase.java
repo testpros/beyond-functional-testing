@@ -2,6 +2,7 @@ package com.testpros.utilities;
 
 import com.accessibility.AccessibilityScanner;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -89,7 +90,7 @@ public class TestBase {
                 chromeOptions.setHeadless(true);
                 driver = new ChromeDriver(chromeOptions);
         }
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1500, 1200));
         drivers.set(driver);
     }
 
@@ -106,7 +107,7 @@ public class TestBase {
         Map<String, Object> auditReport = scanner.runAccessibilityAudit();
         Reporter.setCurrentTestResult(result);
         Reporter.log(auditReport.get("plain_report").toString().replace("\n", "\n<br/>"));
-        Reporter.log("<br/><br/><img src=\"data:image/png;base64," + Base64.getEncoder().encodeToString((byte[]) auditReport.get("screenshot")) + "\"/>");
+        Reporter.log("<br/><br/><img width='100%' src=\"data:image/png;base64," + Base64.getEncoder().encodeToString((byte[]) auditReport.get("screenshot")) + "\"/>");
         drivers.get().quit();
     }
 }
