@@ -1,7 +1,10 @@
 package com.testpros.utilities;
 
+import com.accessibility.AccessibilityScanner;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,6 +14,10 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Map;
 
 public class TestBase {
 
@@ -82,21 +89,24 @@ public class TestBase {
                 chromeOptions.setHeadless(true);
                 driver = new ChromeDriver(chromeOptions);
         }
+        driver.manage().window().maximize();
         drivers.set(driver);
     }
 
     /**
-     * After we run each of our tests, we need to tear down the system. But before we do, we are first going to take a
-     * screenshot, and write it into the TestNG logger.
+     * After we run each of our tests, we need to tear down the system. But before we do, we are first going to analyze
+     * the page, to check it for accessibility issues, and post those into the TestNG report
      *
      * @param result TestNG interface containing run details of the test; automatically provided by dependency injection
      */
     @AfterMethod(alwaysRun = true)
-    public void destroyBrowser(ITestResult result) {
+    public void destroyBrowser(ITestResult result) throws IOException {
         WebDriver driver = drivers.get();
-        String screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+        AccessibilityScanner scanner = new AccessibilityScanner(driver);
+        Map<String, Object> auditReport = scanner.runAccessibilityAudit();
         Reporter.setCurrentTestResult(result);
-        Reporter.log("<img src=\"data:image/png;base64," + screenshot + "\"/>");
+        Reporter.log(auditReport.get("plain_report").toString().replace("\n", "\n<br/>"));
+        Reporter.log("<br/><br/><img src=\"data:image/png;base64," + Base64.getEncoder().encodeToString((byte[]) auditReport.get("screenshot")) + "\"/>");
         drivers.get().quit();
     }
 }
