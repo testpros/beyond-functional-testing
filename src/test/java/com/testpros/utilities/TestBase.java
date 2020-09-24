@@ -2,10 +2,7 @@ package com.testpros.utilities;
 
 import com.accessibility.AccessibilityScanner;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.Proxy;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -103,11 +100,16 @@ public class TestBase {
     @AfterMethod(alwaysRun = true)
     public void destroyBrowser(ITestResult result) throws IOException {
         WebDriver driver = drivers.get();
-        AccessibilityScanner scanner = new AccessibilityScanner(driver);
-        Map<String, Object> auditReport = scanner.runAccessibilityAudit();
         Reporter.setCurrentTestResult(result);
-        Reporter.log(auditReport.get("plain_report").toString().replace("\n", "\n<br/>"));
-        Reporter.log("<br/><br/><img width='100%' src=\"data:image/png;base64," + Base64.getEncoder().encodeToString((byte[]) auditReport.get("screenshot")) + "\"/>");
+        if ("true".equals(Property.getProperty("accessibility"))) {
+            AccessibilityScanner scanner = new AccessibilityScanner(driver);
+            Map<String, Object> auditReport = scanner.runAccessibilityAudit();
+            Reporter.log(auditReport.get("plain_report").toString().replace("\n", "\n<br/>"));
+            Reporter.log("<br/><br/><img width='100%' src=\"data:image/png;base64," + Base64.getEncoder().encodeToString((byte[]) auditReport.get("screenshot")) + "\"/>");
+        } else {
+            String screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+            Reporter.log("<img width='100%' src=\"data:image/png;base64," + screenshot + "\"/>");
+        }
         drivers.get().quit();
     }
 }
