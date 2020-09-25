@@ -1,6 +1,7 @@
 package com.testpros.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class TestBase {
      *
      * @return the url of the site under test
      */
-    protected String getBaseUrl() {
+    public static String getBaseUrl() {
         String baseUrl = Property.getProperty("baseUrl");
         if (baseUrl == null) {
             return "http://testpros.com";
@@ -62,6 +63,7 @@ public class TestBase {
                 WebDriverManager.firefoxdriver().forceCache().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setHeadless(true);
+                firefoxOptions.setAcceptInsecureCerts(true);
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "chrome":
@@ -69,8 +71,10 @@ public class TestBase {
                 WebDriverManager.chromedriver().forceCache().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setHeadless(true);
+                chromeOptions.setAcceptInsecureCerts(true);
                 driver = new ChromeDriver(chromeOptions);
         }
+        driver.manage().window().setSize(new Dimension(1500, 1200));
         drivers.set(driver);
     }
 
