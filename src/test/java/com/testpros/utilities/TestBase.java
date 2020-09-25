@@ -24,7 +24,7 @@ public class TestBase {
      *
      * @return the url of the site under test
      */
-    protected String getBaseUrl() {
+    public static String getBaseUrl() {
         String baseUrl = Property.getProperty("baseUrl");
         if (baseUrl == null) {
             return "http://testpros.com";
@@ -54,6 +54,7 @@ public class TestBase {
             // set the proxy information
             Proxy proxy = new Proxy();
             proxy.setHttpProxy(setProxy);
+            proxy.setSslProxy(setProxy);
             capabilities.setCapability(CapabilityType.PROXY, proxy);
         }
     }
@@ -72,6 +73,7 @@ public class TestBase {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 setupProxy(firefoxOptions);
                 firefoxOptions.setHeadless(true);
+                firefoxOptions.setAcceptInsecureCerts(true);
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "chrome":
@@ -80,6 +82,7 @@ public class TestBase {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 setupProxy(chromeOptions);
                 chromeOptions.setHeadless(true);
+                chromeOptions.setAcceptInsecureCerts(true);
                 driver = new ChromeDriver(chromeOptions);
         }
         drivers.set(driver);
