@@ -85,6 +85,7 @@ public class TestBase {
                 chromeOptions.setAcceptInsecureCerts(true);
                 driver = new ChromeDriver(chromeOptions);
         }
+        driver.manage().window().setSize(new Dimension(1500, 1200));
         drivers.set(driver);
     }
 
