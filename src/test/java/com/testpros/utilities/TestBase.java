@@ -89,7 +89,7 @@ public class TestBase {
         WebDriver driver = drivers.get();
         String screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
         Reporter.setCurrentTestResult(result);
-        Reporter.log("<img src=\"data:image/png;base64," + screenshot + "\"/>");
+        Reporter.log("<img width='100%' src=\"data:image/png;base64," + screenshot + "\"/>");
         drivers.get().quit();
     }
 }
