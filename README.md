@@ -27,7 +27,7 @@ the workshop
 ### Java JDK
 #### Download
 Download the latest JDK 8 from Oracle’s website at 
-[this link](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html){:target="_blank"}.
+<a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank">this link</a>.
 Under **Java SE Development Kit 8uXXX** click the download link for the computer system
 you are running.
 #### Install
