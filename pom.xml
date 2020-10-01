@@ -18,7 +18,7 @@
         <selenium.version>3.141.59</selenium.version>
         <testng.version>7.3.0</testng.version>
         <webdrivermanager.version>3.7.1</webdrivermanager.version>
-        <webdriver-accessibility-version>1.2.0</webdriver-accessibility-version>
+        <webdriver-accessibility-version>1.3.0</webdriver-accessibility-version>
 
         <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
         <failsafe.threads>5</failsafe.threads>
