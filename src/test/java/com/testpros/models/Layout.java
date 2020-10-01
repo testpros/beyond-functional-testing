@@ -19,7 +19,7 @@ public class Layout {
     }
 
     public WebElement getHeader(WebElement element) {
-        return element.findElement(By.tagName("h1"));
+        return element.findElement(By.tagName("h2"));
     }
 
     public List<WebElement> getSections() {
