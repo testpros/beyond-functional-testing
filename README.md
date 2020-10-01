@@ -27,7 +27,7 @@ the workshop
 ### Java JDK
 #### Download
 Download the latest JDK 8 from Oracle’s website at 
-<a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank">this link</a>.
+[this link](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
 Under **Java SE Development Kit 8uXXX** click the download link for the computer system
 you are running.
 #### Install
@@ -103,7 +103,7 @@ display the currently installed version of Java.
 ### Maven
 #### Download
 Download Maven from the Apache website at 
-[this link](https://maven.apache.org/download.cgi){:target="_blank"}. At time of 
+[this link](https://maven.apache.org/download.cgi). At time of 
 this writing, the current version is 3.6.3, but feel free to use a later version. 
 Note that if a later version is installed, then the version numbers in the file 
 names below will need to use that version.
@@ -156,7 +156,7 @@ OS name: "linux", version: "5.4.0-47-generic", arch: "amd64", family: "unix"
 
 ### Git
 #### Download and Install
-1. Navigate to [git downloads](https://git-scm.com/downloads){:target="_blank"}
+1. Navigate to [git downloads](https://git-scm.com/downloads)
 2. Select the operating system you are running
 3. If Windows or Mac, run the installer
 4. If Linux, follow the provided instructions
@@ -166,7 +166,7 @@ Run `git --version` to verify that it is correctly installed. This command will
 display the currently installed version of Git.
 
 ### Chrome Browser
-1. Navigate to [chrome downloads](https://www.google.com/chrome/){:target="_blank"}
+1. Navigate to [chrome downloads](https://www.google.com/chrome/)
 2. Click on the “Download Chrome” button. The appropriate installation package for 
 your operating system will be automatically downloaded
 3. Once the download is done, run the installer and, unless there is a known reason,
@@ -181,7 +181,7 @@ other Java friendly IDE, IntelliJ does not have to be installed. That said, be s
 to be familiar with your IDE, as the instructor might have limited support based on
 the chosen IDE.*
 #### Download
-1. Navigate to [Intellij](https://www.jetbrains.com/idea/download/){:target="_blank"}
+1. Navigate to [Intellij](https://www.jetbrains.com/idea/download/)
 2. You should be forwarded to the section for your current system setup
 3. Download the Community version (Free, open source)
 #### Install
@@ -195,7 +195,7 @@ will be created from the archive.
 ### Zed Attack Proxy
 #### Download
 Download the latest Zed Attack Proxy version from ZAP’s website at 
-[this link](https://www.zaproxy.org/download/){:target="_blank"}. At time of this 
+[this link](https://www.zaproxy.org/download/). At time of this 
 writing, the current version is 2.9, but feel free to use a later version. Click 
 the download link for the computer system you are running.
 #### Install
@@ -209,7 +209,7 @@ ZAP will automatically start.
 ### JMeter
 #### Download and Install
 Download the latest JMeter version from apache’s website at 
-[this link](https://jmeter.apache.org/download_jmeter.cgi){:target="_blank"}. Select 
+[this link](https://jmeter.apache.org/download_jmeter.cgi). Select 
 the link for either the tgz or zip, depending on whichever compressed file type you are 
 comfortable handling. Unzip the zip/tar file into the directory where you want 
 JMeter to be installed.
