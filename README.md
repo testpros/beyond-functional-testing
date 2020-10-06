@@ -25,76 +25,43 @@ the workshop
  * [JMeter](#jmeter)
  
 ### Java JDK
-#### Download
-Download the latest JDK 8 from Oracle’s website at 
-[this link](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
-Under **Java SE Development Kit 8uXXX** click the download link for the computer system
-you are running.
 #### Install
-Note that in the following instructions, if a version other than Java 8u261 is 
+Note that in the following instructions, if a version other than Java 8u265 is 
 installed (which is fine, download the latest Java 8 version), the file names 
-below will differ in the version number (8u261 or 1.8.0_261).
+below will differ in the version number (8u265 or 1.8.0_265).
 ##### Windows
 You must have administrative permissions in order to install the JDK on Microsoft 
 Windows.
-The file jdk-8u261-windows-i586.exe is the JDK installer for 32-bit systems. 
-The file jdk-8u261-windows-x64.exe is the JDK installer for 64-bit systems.
-1. If you downloaded either file instead of running it directly from the website, 
+1. Navigate to [redhat's site](https://developers.redhat.com/products/openjdk/download)
+to download the latest version of OpenJDK.
+2. Find the correct `msi` for your Windows system. If you instead want to install
+the `zip` follow instructions [here](https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows)
+3. If you downloaded either file instead of running it directly from the website, 
 double-click the installer's icon.
-2. Follow the instructions the installer provides.
-3. When finished with the installation, you can delete the downloaded file to 
+4. Follow the instructions the installer provides.
+5. When finished with the installation, you can delete the downloaded file to 
 recover disk space.
 ##### Linux - DEB
-This procedure installs the Java Development Kit (JDK) for 64-bit Linux, using an 
-archive binary file (.tar.gz).
-1. Change directory to the location where the JDK will be installed. These 
-instructions assume this directory will be `/usr/java/`, though this is not a 
-requirement. 
-2. Move the .tar.gz archive binary to the directory from step 1.
-3. Unpack the .tar.gz archive file and install the JDK:
-`tar zxvf jdk-8u261-linux-x64.tar.gz`
-4. The Java Development Kit files are installed in a directory called 
-`jdk1.8.0_261` in the current directory.
-5. Open `.bash_profile` file:
-`vi ~/.bash_profile`
-6. Set the `JAVA_HOME` environment variable:
-`export JAVA_HOME=/usr/java/jdk1.8.0_261/bin/java`
-7. Modify thLinux, Solaris and Mac OS Xe `PATH` environment variable as follows:
-`export PATH=$PATH:/usr/java/jdk1.8.0_261/bin`
-8. Activate the new path settings immediately:
-`source ~/.bash_profile`
+1. Open a terminal window
+2. Install openjdk via `apt`
+```shell script
+sudo apt-get install openjdk-8-jdk
+```
 ##### Linux - RPM
-1. Become root by running su and entering the super-user password.
-2. Uninstall any earlier installations of the JDK packages:
-`rpm -e package_name`
-3. Install the package:
-`rpm -ivh jdk-8u261-linux-x64.rpm`
-To upgrade a package:
-`rpm -Uvh jdk-8u261-linux-x64.rpm`
-4. Delete the `.rpm` file to save disk space as it is no longer needed
-5. Open the `.bash_profile` file:
-`vi ~/.bash_profile`
-6. Set the `JAVA_HOME` environment variable:
-`export JAVA_HOME=/usr/java/jdk1.8.0_261/bin/java`
-7. Modify the `PATH` environment variable as follows:
-`export PATH=$PATH:/usr/java/jdk1.8.0_261/bin`
-8. activate the new path settings immediately:
-`source ~/.bash_profile`
+1. Open a terminal window
+2. Install openjdk via `apt`
+```shell script
+su -c "yum install java-1.7.0-openjdk"
+```
 ##### Mac OS
-1. From either the Downloads window of the browser, or from the file browser, 
-double-click the `.dmg` file to launch it.
-A Finder window appears containing an icon of an open box and the name of the 
-.pkg file.
-2. Double click the package icon to launch the Install app.
-3. The Install app displays the Introduction window.
-4. Click Continue.
-5. The Installation Type window appears.
-6. Click Install.
-7. A window appears that says "Installer is trying to install new software. Type 
-your password to allow this."
-8. Enter the Administrator login and password and click Install Software.
-9. The software is installed and a confirmation window appears.
-10. After the software is installed, delete the `.dmg` file to save disk space.
+We will be using `brew` to install openjdk 8 from a terminal window
+1. Open a terminal
+2. Run the following command to checkout the correct openjdk 
+version `brew tap AdoptOpenJDK/openjdk`
+3. Run the following command to find the correct openjdk 
+version `brew search /adoptopenjdk/`
+4. Copy the displayed line that has openjdk8 listed, and run brew install
+with it. For example: `brew install adoptopenjdk/openjdk/adoptopenjdk-openjdk8`
 #### Verify
 Open a new command prompt (in windows use Windows Key + R then type cmd) 
 Run `javac -version` to verify that it is correctly installed. This command will 
@@ -145,7 +112,6 @@ and that `$JAVA_HOME/bin` is in your `PATH` environment variable:
 Open a new command prompt (in Windows use Windows Key + R then type cmd) and run 
 `mvn --version` to verify that it is correctly installed. This should display 
 something like the following:
-
 ```
 Apache Maven 3.6.3
 Maven home: /usr/share/maven
