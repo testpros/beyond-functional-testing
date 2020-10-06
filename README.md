@@ -32,7 +32,7 @@ below will differ in the version number (8u265 or 1.8.0_265).
 ##### Windows
 You must have administrative permissions in order to install the JDK on Microsoft 
 Windows.
-1. Navigate to [redhat's site](https://developers.redhat.com/products/openjdk/download)
+1. Navigate to [RedHat's site](https://developers.redhat.com/products/openjdk/download)
 to download the latest version of OpenJDK.
 2. Find the correct `msi` for your Windows system. If you instead want to install
 the `zip` follow instructions [here](https://stackoverflow.com/questions/52511778/how-to-install-openjdk-11-on-windows)
